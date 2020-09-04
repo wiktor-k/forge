@@ -78,12 +78,15 @@ outputs.forEach(info => {
 
   // plain unoptimized unminified bundle
   const bundle = Object.assign({}, common, {
-    mode: 'development',
+    mode: 'production',
     output: {
       path: path.join(__dirname, 'dist'),
       filename: info.filenameBase + '.js',
       library: info.library || '[name]',
       libraryTarget: info.libraryTarget || 'umd'
+    },
+    optimization: {
+      minimize: false
     }
   });
   if(info.library === null) {
